@@ -43,11 +43,19 @@ const AuthProvider = (props) => {
   const handleLogout = () => {
     console.log("logout user");
     setUser(null);
+    localStorage.removeItem("access-token");
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, handleRegister, handleLogin, handleLogout, setUser }}
+      value={{
+        user,
+        handleRegister,
+        handleLogin,
+        handleLogout,
+        setUser,
+        authenticated: user ? true : false,
+      }}
     >
       {props.children}
     </AuthContext.Provider>
