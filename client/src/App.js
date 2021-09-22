@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Things from "./pages/Things";
 import ComponentDemo from "./pages/CompentDemo";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/things" component={Things} />
           <Route exact path="/components" component={ComponentDemo} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
           <Route component={() => <p>react router 404 path not found</p>} />
         </Switch>
       </Container>

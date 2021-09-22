@@ -1,28 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
+import { AuthContext } from "../providers/AuthProvider";
 
-class Navbar extends React.Component {
-  render() {
-    const { location } = this.props;
+const Navbar = (props) => {
+  const { user, handleLogout } = useContext(AuthContext);
+  const { location } = props;
+
+  const rightNavItems = () => {
+    if (user) {
+      return <Menu.Item onClick={() => handleLogout()}>Logout</Menu.Item>;
+    }
     return (
-      <Menu>
-        <Link to="/">
-          <Menu.Item active={location.pathname == "/"}>Home</Menu.Item>
+      <>
+        <Link to="/login">
+          <Menu.Item active={location.pathname == "/login"}>Login</Menu.Item>
         </Link>
         <Link to="/register">
           <Menu.Item active={location.pathname == "/register"}>
             Register
           </Menu.Item>
         </Link>
-        <Link to="/components">
-          <Menu.Item active={location.pathname == "/components"}>
-            Components
-          </Menu.Item>
-        </Link>
-      </Menu>
+      </>
     );
-  }
-}
+  };
+  return (
+    <Menu>
+      <Link to="/">
+        <Menu.Item active={location.pathname == "/"}>Home</Menu.Item>
+      </Link>
+
+      <Link to="/components">
+        <Menu.Item active={location.pathname == "/components"}>
+          Components
+        </Menu.Item>
+      </Link>
+      <Menu.Menu position="right">{rightNavItems()}</Menu.Menu>
+    </Menu>
+  );
+};
 
 export default withRouter(Navbar);

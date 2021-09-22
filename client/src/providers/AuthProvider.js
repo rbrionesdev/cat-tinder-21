@@ -25,11 +25,24 @@ const AuthProvider = (props) => {
       console.log(err.response);
     }
   };
-  const handleLogin = (user) => {
+  const handleLogin = async (user) => {
     console.log("login user,user", user);
+    // so axios call now
+    try {
+      let res = await axios.post("/api/auth/sign_in", user);
+      console.log(res);
+      console.log(axios);
+    } catch (err) {
+      // will hit catch if user is not db, bad usename or password
+      // coundn't find email...
+      alert("unsuccessful login check console check username or password");
+      console.log(err);
+      console.log(err.response);
+    }
   };
   const handleLogout = () => {
-    console.log("login user");
+    console.log("logout user");
+    setUser(null);
   };
 
   return (
