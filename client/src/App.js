@@ -8,21 +8,24 @@ import Things from "./pages/Things";
 import ComponentDemo from "./pages/CompentDemo";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import FetchUser from "./components/FetchUser";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Container>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/things" component={Things} />
-          <Route exact path="/components" component={ComponentDemo} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Route component={() => <p>react router 404 path not found</p>} />
-        </Switch>
-      </Container>
+      <FetchUser>
+        <Container>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/things" component={Things} />
+            <Route exact path="/components" component={ComponentDemo} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route component={() => <p>react router 404 path not found</p>} />
+          </Switch>
+        </Container>
+      </FetchUser>
     </>
   );
 }

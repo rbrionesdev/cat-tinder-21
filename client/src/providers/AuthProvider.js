@@ -31,7 +31,7 @@ const AuthProvider = (props) => {
     try {
       let res = await axios.post("/api/auth/sign_in", user);
       console.log(res);
-      console.log(axios);
+      setUser(res.data.data);
     } catch (err) {
       // will hit catch if user is not db, bad usename or password
       // coundn't find email...
@@ -47,7 +47,7 @@ const AuthProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, handleRegister, handleLogin, handleLogout }}
+      value={{ user, handleRegister, handleLogin, handleLogout, setUser }}
     >
       {props.children}
     </AuthContext.Provider>
