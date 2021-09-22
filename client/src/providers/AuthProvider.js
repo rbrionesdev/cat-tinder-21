@@ -43,6 +43,7 @@ const AuthProvider = (props) => {
   const handleLogout = () => {
     console.log("logout user");
     setUser(null);
+    // remove the access from local storage.
     localStorage.removeItem("access-token");
   };
 
