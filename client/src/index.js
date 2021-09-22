@@ -6,11 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 // we are renaming BrowserRoute to Router
 import { BrowserRouter as Router } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
+import AuthProvider from "./providers/AuthProvider";
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <AuthProvider>
+    <Router>
+      <App />
+    </Router>
+  </AuthProvider>,
   document.getElementById("root")
 );
 
